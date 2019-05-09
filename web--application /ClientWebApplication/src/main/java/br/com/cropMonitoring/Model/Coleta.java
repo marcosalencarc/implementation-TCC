@@ -5,6 +5,13 @@ public class Coleta {
 	
 	int id;
 	String data;
+	
+	
+	public Coleta(int id, String data) {
+		super();
+		this.id = id;
+		this.data = data;
+	}
 	public int getId() {
 		return id;
 	}

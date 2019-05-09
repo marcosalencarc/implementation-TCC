@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:tcc_app/Model/sensorRead.dart';
 import 'package:intl/intl.dart';
 import 'package:tcc_app/View/read_page.dart';
+import 'dart:async';
+
 class RecomendationPage extends StatefulWidget {
   @override
   _RecomendationPageState createState() => _RecomendationPageState();

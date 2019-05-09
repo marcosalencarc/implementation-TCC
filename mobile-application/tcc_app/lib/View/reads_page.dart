@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tcc_app/Model/sensorRead.dart';
 import 'package:tcc_app/Model/sensorRead.dart';
 import 'package:intl/intl.dart';
+import 'dart:async';
 
 class ReadsPage extends StatefulWidget {
   @override

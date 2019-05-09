@@ -1,8 +1,12 @@
 .opcoes:hover{
 	background-color: #EEEEEE;
-	border-radius: 0.5em;
+
 	cursor: pointer;
 	text-decoration: none;
+}
+.opcoes{
+	border-radius: 0.5em;
+	
 }
 
 body{

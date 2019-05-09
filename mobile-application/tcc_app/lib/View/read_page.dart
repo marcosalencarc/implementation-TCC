@@ -110,7 +110,7 @@ class _ReadPageState extends State<ReadPage> {
   Widget cardTemperatura(){
     if(widget.current!=null) {
       return Card(
-          elevation: 1,
+          elevation: 1.0,
           color: Colors.red,
           child: Container(
               height: 100.0,
@@ -135,7 +135,7 @@ class _ReadPageState extends State<ReadPage> {
   Widget cardUmidade(){
     if(widget.current!=null) {
       return Card(
-          elevation: 1,
+          elevation: 1.0,
           color: Colors.blue,
           child: Container(
               height: 100.0,
@@ -160,7 +160,7 @@ class _ReadPageState extends State<ReadPage> {
   Widget cardPrecipitacao(){
     if(widget.current!=null) {
       return Card(
-          elevation: 1,
+          elevation: 1.0,
           color: Colors.blueGrey,
           child: Container(
               height: 100.0,

@@ -54,8 +54,17 @@ public class Repository {
 		stations.add(s1);
 		stations.add(s2);
 		
+		
+		
 		Random e = new Random();
-		for(int i = 0; i < 5; i++) {
+		sensorReads.clear();
+		int day = e.nextInt(30) +1 ;
+		SensorRead l1 = new SensorRead(1, 75, new Date(2019,4, day), umidadeAr, s1);
+		SensorRead l2 = new SensorRead(1, 60, new Date(2019,4, day), umidadeSolo, s1);
+		SensorRead l3 = new SensorRead(1, 27, new Date(2019,4, day), temperaturaAr, s1);
+		SensorRead l4 = new SensorRead(1, 23, new Date(2019,4, day), temperaturaSolo, s1);
+		SensorRead l5 = new SensorRead(1, 1, new Date(2019,4, day), precipitacao, s1);
+		/*for(int i = 0; i < 5; i++) {
 			sensorReads.clear();
 			int day = e.nextInt(30) +1 ;
 			SensorRead l1 = new SensorRead(1, 75, new Date(2019,4, day), umidadeAr, s1);
@@ -87,7 +96,14 @@ public class Repository {
 			sensorReads.add(l5);
 			//coletas.put(2, sensorReads);
 			
-		}
+		}*/
+		
+		
+		coletas.add(new Coleta(1, "05/04/2019 - 15:11:23"));
+		coletas.add(new Coleta(2, "06/04/2019 - 13:57:49"));
+		coletas.add(new Coleta(3, "09/04/2019 - 11:28:51"));
+		coletas.add(new Coleta(4, "14/04/2019 - 18:17:47"));
+		coletas.add(new Coleta(5, "24/04/2019 - 16:28:16"));
 		
 		
 		
