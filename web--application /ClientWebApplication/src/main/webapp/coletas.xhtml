@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        <meta name="description" content=""/>
+        <meta name="author" content=""/>
+
+        <title>ALOHA - Sistema de Alocação de Horários Acadêmicos</title>
+
+        <!-- Bootstrap core CSS -->
+        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+
+        <!-- Custom fonts for this template -->
+        <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+        <!-- Plugin CSS -->
+        <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet"/>
+
+        <!-- Custom styles for this template -->
+        <link href="css/creative.css" rel="stylesheet"/>
+        <link href="css/style.css" rel="stylesheet"/>
+    </h:head>
+    <h:body id="page-top">
+        <nav class="navbar navbar-expand-lg navbar-light navbar-shrink" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand js-scroll-trigger" href="#page-top">ALOHA UFC</a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="index.xhtml">Inicio</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Gerenciamento
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="salas.xhtml">Salas</a>
+                                <a class="dropdown-item" href="combos.xhtml">Combos</a>
+                                <a class="dropdown-item" href="disciplinas.xhtml">Disciplinas</a>
+                                <a class="dropdown-item" href="docentes.xhtml">Docentes</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="planejamentos.xhtml">Planejamentos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="configuracoes.xhtml">Configurações</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="sobre.html">Sobre</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <br/>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <center>
+                    <nav aria-label="breadcrumb" style="width: 75%;">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Gerenciamento de Salas</li>
+                        </ol>
+                    </nav>
+                </center>
+
+            </div>
+        </div>
+        <div class="container col-lg-9">
+            <form class="form-inline my-2 my-lg-0">
+                <h2 class="section-heading float-left" style="font-size: 22px;">GERENCIAMENTO DE SALAS</h2>
+                <hr class="my-4"/>
+                <input class="form-control mr-sm-2 float-right" type="search" placeholder="Pesquisar sala..." aria-label="Pesquisar sala..." style="width: 201px;"/>
+                <button class="btn btn-outline-primary my-2 my-sm-0" style="border-radius: 0.5em;" type="submit">Pesquisar</button>
+            </form>
+            <br/>
+            
+            <h:form id="form" prependId="false">
+                <p:dataTable value="#{salaMB.salas}" rows="15" var="sala" paginator="true"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="5,10,15">
+                    <p:column headerText="Código" width="90">
+                        <h:outputText value="#{sala.codigoModelo}" />
+                    </p:column>
+                    <p:column headerText="Nome">
+                        <h:outputText value="#{sala.nome}" />
+                    </p:column>
+                    <p:column headerText="Tipo">
+                        <h:outputText value="#{sala.tipo}" />
+                    </p:column>
+                    <p:column headerText="Bloco">
+                        <h:outputText value="#{sala.bloco}" />
+                    </p:column>
+                    <p:column headerText="Capacidade" width="100">
+                        <h:outputText value="#{sala.capacidade}" />
+                    </p:column>
+                    <p:column headerText="Ações" style="text-align:center;" width="70">
+                        <div style="display: inline; position: relative;" >
+                            <p:commandLink update=":form:salaDetail"  styleClass="ui-icon ui-icon-search"  oncomplete="PF('salaDialog').show();" style="float: left;">
+                                <f:setPropertyActionListener value="#{sala}" target="#{salaMB.sala}"/>
+                            </p:commandLink>
+                            <p:commandLink  styleClass="ui-icon ui-icon-pencil"  actionListener="#{salaMB.editar()}" style="float: left;">
+                                <f:setPropertyActionListener value="#{sala}" target="#{salaMB.sala}"/>
+                            </p:commandLink>
+                            <p:commandLink  styleClass="ui-icon ui-icon-trash"  action="#{salaMB.remover()}" style="float: left;">                               
+                                <f:setPropertyActionListener value="#{sala}" target="#{salaMB.sala}"/>
+                                <p:confirm header="Confirmação" message="Deseja realmente excluir a sala ?" />
+                            </p:commandLink>
+                        </div>
+
+                    </p:column>
+                </p:dataTable>
+                <br/>
+                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" >
+                    <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" style="margin-left: 200px"/>
+                    <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" style="margin-left: 5px"/>
+                    
+                </p:confirmDialog>
+                <p:dialog  header="Informações da sala" widgetVar="salaDialog" modal="true" width="400" showEffect="blind" hideEffect="explode" resizable="false">
+                    <p:outputPanel id="salaDetail" style="text-align:center;" rendered="#{not empty salaMB.sala}">
+
+                        <div class="modal-body" >
+                            <div class="row" >
+                                <b>Código: &nbsp;</b> <h:outputText value="#{salaMB.sala.codigoModelo}" />
+                            </div>
+                            <div class="row" >
+                                <b>Nome: &nbsp; </b> <h:outputText value="#{salaMB.sala.nome}" />
+                            </div>
+                            <div class="row" >
+                                <b>Tipo: &nbsp;</b> <h:outputText value="#{salaMB.sala.tipo}" />
+                            </div>
+                            <div class="row" >
+                                <b>Bloco: &nbsp;</b> <h:outputText value="#{salaMB.sala.bloco}" />
+                            </div>
+                            <div class="row" >
+                                <b>Capacidade: &nbsp; </b> <h:outputText value="#{salaMB.sala.capacidade}" />
+                            </div>                               
+                        </div>
+                        <div class="modal-footer">
+                            <p:commandButton onclick="dialog.hide()" process="@none" value="Cancelar" />
+                            <p:commandButton value="Editar Informações" actionListener="#{salaMB.editar()}" ></p:commandButton>
+
+                        </div>
+                    </p:outputPanel>
+                </p:dialog>
+                <p:commandButton style="position: relative; left: 91%" value="Adicionar Sala" icon="ui-icon-plus" actionListener="#{salaMB.novaSala()}"></p:commandButton>
+            </h:form>  
+
+            <br/>
+
+        </div>
+        <br/>
+
+    </h:body>
+</html>

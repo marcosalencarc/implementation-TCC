@@ -1,0 +1,8 @@
+br/com/cropMonitoring/Model/Station.class
+br/com/cropMonitoring/Model/Recommendation.class
+br/com/cropMonitoring/Model/Sensor.class
+br/com/cropMonitoring/Model/SensorRead.class
+br/com/cropMonitoring/Model/User.class
+br/com/cropMonitoring/Model/Records.class
+br/com/cropMonitoring/mock/Repository.class
+br/com/cropMonitoring/mb/StationMB.class
